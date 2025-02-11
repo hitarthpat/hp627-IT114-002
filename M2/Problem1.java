@@ -17,9 +17,9 @@ public class Problem1 extends BaseClass {
         // Start Solution Edits
         
     //Challenge
-        for (int n:arr) // loop through every element in the arry
-            if (n % 2 == 1) //check if the element  has a remainder of 1 when divided by two
-                System.out.print(n+ ","); //if the element has a remainder, then print the element followed by a comma
+        for (int n:arr) // loop through every element in the arry -- hp627 2/11/25
+            if (n % 2 == 1) //check if the element  has a remainder of 1 when divided by two -- hp627 2/11/25
+                System.out.print(n+ ","); //if the element has a remainder, then print the element followed by a comma -- hp627 2/11/25
     
 
         // End Solution Edits
