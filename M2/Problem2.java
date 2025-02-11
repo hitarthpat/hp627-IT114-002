@@ -21,8 +21,10 @@ public class Problem2 extends BaseClass {
         double total = 0;
         // Start Solution Edits
         // Solve Challenge 1 here
-        
-      
+        for (double n : arr) { //loop through every element in array -- hp627 - 2/11/2025
+            total +=n; //add the element to total -- hp627 - 2/11/2025
+        }
+    
         // Solve Challenge 2 here
         Object modifiedTotal = "?";
 
