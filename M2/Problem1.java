@@ -17,9 +17,10 @@ public class Problem1 extends BaseClass {
         // Start Solution Edits
         
     //Challenge
-        for (int n:arr)
-            if (n % 2 == 1)
-                System.out.print(n+ ",")
+        for (int n:arr) // loop through every element in the arry
+            if (n % 2 == 1) //check if the element  has a remainder of 1 when divided by two
+                System.out.print(n+ ","); //if the element has a remainder, then print the element followed by a comma
+    
 
         // End Solution Edits
         System.out.println("");
