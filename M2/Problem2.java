@@ -26,7 +26,7 @@ public class Problem2 extends BaseClass {
         }
     
         // Solve Challenge 2 here
-        Object modifiedTotal = "?";
+        Object modifiedTotal = String.format("%.2f", total); // Formates it into a string and then places it into 2 decimal -- hp627 - 2/12/25
 
         // End Solution Edits
         System.out.println("Total Raw Value: " +total);
@@ -36,7 +36,7 @@ public class Problem2 extends BaseClass {
     }
 
     public static void main(String[] args) {
-        final String ucid = "mt85"; // <-- change to your UCID
+        final String ucid = "hp627"; // <-- change to your UCID
         // no edits below this line
         printHeader(ucid, 2);
         sumValues(array1, 1);
