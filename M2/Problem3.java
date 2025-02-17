@@ -18,22 +18,23 @@ public class Problem3 extends BaseClass {
         Object[] output = new Object[arr.length];
         // Start Solution Edits
 //Implementation of making each value positive, preserving type -- hp627 - 2/16/2025
-    
 
         for (int i = 0; i < arr.length; i++) {
+            // Gets the current element from the array and store its object -- hp627 -2/16/2025
             Object val = arr[i];
 
             if (val instanceof Integer) {
+                //Check if the value is an Intger -- hp627 - 2/16/2025
                 int x = (Integer) val;
                 x = Math.abs(x);
-                output[i] = x;
+                output[i] = x; //Store absolute value in output array - hp627 --2/16/2025
             } 
-            else if (val instanceof Double) {
+            else if (val instanceof Double) { // Checks if the value is double -- 2/17/2025
                 double x = (Double) val;
                 x = Math.abs(x);
                 output[i] = x;
             } 
-            else if (val instanceof Float) {
+            else if (val instanceof Float) { //Check if the value is float --2/17/2025
                 float x = (Float) val;
                 x = Math.abs(x);
                 output[i] = x;

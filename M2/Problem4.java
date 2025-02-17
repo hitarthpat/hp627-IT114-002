@@ -95,7 +95,7 @@ public class Problem4 extends BaseClass {
             }
             formattedText = formattedText.trim(); // finalizing trimming -- hp627 - 2/16/25
 
-            // extract middle 3 characters (extra credit) -- hp627 - 2/16/25
+            // extract middle 3 characters (extra credit)
             int length = formattedText.length();
             if (length < 3) {
                 placeholderForMiddleCharacters = "Not enough characters";
