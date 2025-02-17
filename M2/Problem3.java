@@ -17,8 +17,46 @@ public class Problem3 extends BaseClass {
         // Step 3: Add code to solve the problem (add/commit as needed)
         Object[] output = new Object[arr.length];
         // Start Solution Edits
-        
+//Implementation of making each value positive, preserving type -- hp627 - 2/16/2025
 
+        for (int i = 0; i < arr.length; i++) {
+            // Gets the current element from the array and store its object -- hp627 -2/16/2025
+            Object val = arr[i];
+
+            if (val instanceof Integer) {
+                //Check if the value is an Intger -- hp627 - 2/16/2025
+                int x = (Integer) val;
+                x = Math.abs(x);
+                output[i] = x; //Store absolute value in output array - hp627 --2/16/2025
+            } 
+            else if (val instanceof Double) { // Checks if the value is double -- 2/17/2025
+                double x = (Double) val;
+                x = Math.abs(x);
+                output[i] = x;
+            } 
+            else if (val instanceof Float) { //Check if the value is float --2/17/2025
+                float x = (Float) val;
+                x = Math.abs(x);
+                output[i] = x;
+            }
+            else if (val instanceof String) {
+                // Try to parse the string as a number, take abs, then store back as string -- hp627 - 2/16/2025
+                String s = (String) val;
+                try {
+                    double d = Double.parseDouble(s);
+                    d = Math.abs(d);
+                    // Convert back to string (simple approach) -- hp627 - 2/16/2025
+                    output[i] = String.valueOf(d);
+                } catch (NumberFormatException e) {
+                    // If parsing fails for some reason, just store original -- hp627 - 2/16/2025
+                    output[i] = s;
+                }
+            } 
+            else {
+                output[i] = val;
+            }
+        }
+        
         // End Solution Edits
         System.out.println("Output: ");
         printOutputWithType(output);
@@ -27,7 +65,7 @@ public class Problem3 extends BaseClass {
     }
 
     public static void main(String[] args) {
-        final String ucid = "mt85"; // <-- change to your UCID
+        final String ucid = "hp627"; // <-- change to your UCID
         // no edits below this line
         printHeader(ucid, 3);
         bePositive(array1, 1);

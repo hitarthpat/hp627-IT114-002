@@ -31,6 +31,81 @@ public class Problem4 extends BaseClass {
         for(int i = 0; i <arr.length; i++){
             // Start Solution Edits
             
+            String input = arr[i];
+
+            // remove non-alphanumeric characters except spaces -- hp627 - 2/16/25
+            String cleaned = "";
+            // travarse through input -- hp627 - 2/16/25
+            for (int j = 0; j < input.length(); j++) {
+                char c = input.charAt(j);
+                // add all chars, numbers, spaces to the variable cleaned -- hp627 - 2/16/25
+                if ((c >= 'a' && c <= 'z') ||
+                        (c >= 'A' && c <= 'Z') ||
+                        (c >= '0' && c <= '9') ||
+                        c == ' ') {
+                    cleaned += c;
+                }
+            }
+
+            // convert to Title Case -- hp627 - 2/16/25
+            String lowercaseText = "";
+            // travarse through cleaned string -- hp627 - 2/16/25
+            for (int j = 0; j < cleaned.length(); j++) {
+                char c = cleaned.charAt(j);
+                if (c >= 'A' && c <= 'Z') {
+                    // convert everything to lowercase -- hp627 - 2/16/25
+                    c = (char) (c + 32);
+                }
+                lowercaseText += c;
+            }
+
+            String titleCase = "";
+            boolean capitalizeNext = true;
+            // traverse through lowerCaseText string -- hp627 - 2/16/25
+            for (int j = 0; j < lowercaseText.length(); j++) {
+                char c = lowercaseText.charAt(j);
+                if (capitalizeNext && (c >= 'a' && c <= 'z')) {
+                    // convert to uppercase, set capitlizeNext to false -- hp627 - 2/16/25
+                    c = (char) (c - 32);
+                    capitalizeNext = false;
+                }
+                // if it's a space, set capitalizeNext to true -- hp627 - 2/16/25
+                else if (c == ' ') {
+                    capitalizeNext = true;
+                }
+                titleCase += c;
+            }
+
+            //trim leading/trailing spaces and remove duplicate spaces -- hp627 - 2/16/25
+            String formattedText = "";
+            boolean lastWasSpace = true;
+            for (int j = 0; j < titleCase.length(); j++) {
+                char c = titleCase.charAt(j);
+                // if it's a space, and last was not a space, append to formatted string -- hp627 - 2/16/25
+                if (c == ' ') {
+                    if (!lastWasSpace) {
+                        formattedText += c;
+                    }
+                    lastWasSpace = true;
+                }
+                else {
+                    formattedText += c;
+                    lastWasSpace = false;
+                }
+            }
+            formattedText = formattedText.trim(); // finalizing trimming -- hp627 - 2/16/25
+
+            // extract middle 3 characters (extra credit)
+            int length = formattedText.length();
+            if (length < 3) {
+                placeholderForMiddleCharacters = "Not enough characters";
+            } else {
+                int mid = length / 2 - 1;
+                placeholderForMiddleCharacters = formattedText.substring(mid, mid + 3);
+            }
+
+
+
              // End Solution Edits
             System.out.println(String.format("Index[%d] \"%s\" | Middle: \"%s\"",i, placeholderForModifiedPhrase, placeholderForMiddleCharacters));
         }
@@ -42,7 +117,7 @@ public class Problem4 extends BaseClass {
     }
 
     public static void main(String[] args) {
-        final String ucid = "mt85"; // <-- change to your UCID
+        final String ucid = "hp627"; // <-- change to your UCID
         // No edits below this line
         printHeader(ucid, 4);
 
