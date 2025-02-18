@@ -28,7 +28,7 @@ public class Problem4 extends BaseClass {
         String placeholderForModifiedPhrase = "";
         String placeholderForMiddleCharacters = "";
         
-        for(int i = 0; i <arr.length; i++){
+        for(int i = 0; i < arr.length; i++) {
             // Start Solution Edits
             
             String input = arr[i];
