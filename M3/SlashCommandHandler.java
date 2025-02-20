@@ -1,5 +1,4 @@
 package M3;
-
 /*
 Challenge 2: Simple Slash Command Handler
 -----------------------------------------
