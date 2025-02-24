@@ -1,5 +1,4 @@
 package M3;
-
 /*
 Challenge 2: Simple Slash Command Handler
 -----------------------------------------
@@ -15,9 +14,10 @@ Challenge 2: Simple Slash Command Handler
 */
 
 import java.util.Scanner;
+import java.util.Random;
 
 public class SlashCommandHandler extends BaseClass {
-    private static String ucid = "mt85"; // <-- change to your UCID
+    private static String ucid = "hp627"; // <-- change to your UCID
 
     public static void main(String[] args) {
         printHeader(ucid, 2, "Objective: Implement a simple slash command parser.");
@@ -29,8 +29,11 @@ public class SlashCommandHandler extends BaseClass {
         while (true) {
             System.out.print("Enter command: ");
             // get entered text
-
+            String input = scanner.nextLine().trim();
+            String[] parts = input.split("",2);
+            String command = parts[0].toLowerCase(); //Make Command Lowercase So it's not case-sensitive --hp627- 2/24/2025
             // check if greet
+            
             //// process greet
 
             // check if roll
