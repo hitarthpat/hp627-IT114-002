@@ -12,7 +12,7 @@ Challenge 1: Command-Line Calculator
 */
 
 public class CommandLineCalculator extends BaseClass {
-    private static String ucid = "mt85"; // <-- change to your ucid
+    private static String ucid = "hp627"; // <-- change to your ucid
 
     public static void main(String[] args) {
         printHeader(ucid, 1, "Objective: Implement a calculator using command-line arguments.");
