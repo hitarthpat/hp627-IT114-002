@@ -36,14 +36,12 @@ public class MadLibsGenerator extends BaseClass {
         List<String> lines = new ArrayList<>();
         // Start edits
 
-        
-
         // load a random story file
 
         // parse the story lines
-
+        
         // iterate through the lines
-
+        
         // prompt the user for each placeholder (note: there may be more than one
         // placeholder in a line)
 

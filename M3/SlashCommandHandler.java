@@ -42,7 +42,7 @@ public class SlashCommandHandler extends BaseClass {
                     int num = Integer.parseInt(diceParts[0]); // Number of dice -- hp627 - 2/24/2025
                     int sides = Integer.parseInt(diceParts[1]); // Number of sides per die -- hp627 - 2/24/2025
                     if (num < 1 || sides < 1) {
-                        System.out.println("Error: Number of dice and sides must be positive integers.");
+                        System.out.println("Error: Number of dice and sides have to be positive integers.");
                         continue;
                     }
                     Random random = new Random();
