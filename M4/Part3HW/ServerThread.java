@@ -158,7 +158,7 @@ public class ServerThread extends Thread {
     private void processPayload(String incoming) {
         if (!processCommand(incoming)) {
             // if not command; send message to all clients via Server
-            server.handleMessage(this, incoming);
+            server.handleShuffleMessage(this, incoming);
         }
 
     }
@@ -220,9 +220,18 @@ public class ServerThread extends Thread {
                             wasCommand = true;
                         }
                         break;
+                    
+                    case "shuffle": //hp627/3/10/2025 - Challenge 3
+                    if (commandData.length >2) {
+                        String textToShuffle = String.join( " ", Arrays.copyOfRange(commandData, 2, commandData.length));
+                        server.handleShuffleMessage(this, textToShuffle);
+                        wasCommand = true;
+                    } else {
+                        this.sendToClient("Error: No message to shuffle");
+                    }
+                    
+                        break;
 
-
-                        
                     default:
                         break;
                         

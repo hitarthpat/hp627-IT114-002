@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.Collections;
+import java.util.List;
+import java.util.Arrays;
 
 public class Server {
     private int port = 3000;
@@ -155,8 +158,18 @@ public class Server {
     
 }
     
-    protected synchronized void handleMessage(ServerThread sender, String text) {
-        relay(sender, text);
+    protected synchronized void handleShuffleMessage(ServerThread sender, String text) { //hp627 - 3/10/2025 - Challenge 3
+        if (text.isEmpty()) {
+            sender.sendToClient("Error: No message to shuffle");
+            return;
+        }
+        
+        List<String> words = Arrays.asList(text.split("//s+"));
+        Collections.shuffle(words);
+        String shuffledMessage = String.join (" ", words);
+
+        String formattedMessage = String.format("Shuffled from User[%s]; %s", sender.getClientId(), shuffledMessage);
+        relay(null, formattedMessage);
     }
     // end handle actions
 
