@@ -157,21 +157,24 @@ public class Server {
     relay(null, message);
     
 }
-    
-    protected synchronized void handleShuffleMessage(ServerThread sender, String text) { //hp627 - 3/10/2025 - Challenge 3
-        if (text.isEmpty()) {
-            sender.sendToClient("Error: No message to shuffle");
-            return;
-        }
-        
-        List<String> words = Arrays.asList(text.split("//s+"));
-        Collections.shuffle(words);
-        String shuffledMessage = String.join (" ", words);
 
-        String formattedMessage = String.format("Shuffled from User[%s]; %s", sender.getClientId(), shuffledMessage);
-        relay(null, formattedMessage);
+// Challege 3 - hp627 3/10/2025    
+
+protected synchronized void handleShuffleMessage(ServerThread sender, String text) { 
+    if (text == null || text.trim().isEmpty()) {
+        sender.sendToClient("Error: No message to shuffle");
+        return;
     }
-    // end handle actions
+    List<String> words = Arrays.asList(text.split("\\s+")); 
+    Collections.shuffle(words);
+    String shuffledMessage = String.join(" ", words);
+
+    String formattedMessage = String.format("Shuffled from User[%s]: %s", sender.getClientId(), shuffledMessage);
+    System.out.println("DEBUG: Shuffled message sent -> " + formattedMessage);
+    relay(null, formattedMessage);
+}
+
+
 
     public static void main(String[] args) {
         System.out.println("Server Starting");
