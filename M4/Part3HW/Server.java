@@ -127,8 +127,26 @@ public class Server {
         relay(sender, rev);
     }
     
+    //hp627/3/6/2025 - Challenge 2
+    protected synchronized void handlePrivateMessage(ServerThread sender, String targetId, String message) {
+        try {
+            long targetClientId= Long.parseLong(targetId);
+            ServerThread targetThread = connectedClients.get(targetClientId);
+
+            if (targetThread != null) {
+                String formattedMessage = String.format ("PM from User[%s]; %s", sender.getClientId(), message);
+                sender.sendToClient(formattedMessage);
+                targetThread.sendToClient(formattedMessage);
+            } else {
+                sender.sendToClient ("User not found or offline.");
+            }
+        } catch (NumberFormatException e) {
+            sender.sendToClient ("Invalid user ID format.");
+        }
+    }
+
     
-    protected synchronized void handleFlip(ServerThread sender) {//hp627/3/6/2025 - Challage 1
+    protected synchronized void handleFlip(ServerThread sender) {//hp627/3/6/2025 - Challenge 1
     String result = Math.random() < 0.5 ? "Heads" : "Tails";
     System.out.println("User[" + sender.getClientId() + "] flipped a coin and got " + result); 
 
