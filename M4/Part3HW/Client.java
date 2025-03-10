@@ -146,7 +146,18 @@ public class Client {
         }
 
 
-        return wasCommand;
+        else if (text.startsWith("/shuffle")) {   //hp627; 3/10/2025 - Challenge 3
+            text = text.replace("/shuffle", " ").trim();
+            if (text.isEmpty()){
+                System.out.println("Error: No message provided for Shuffle");
+            } else {
+            String[] commandData = {Constants.COMMAND_TRIGGER, "shuffle",text};
+            sendToServer(String.join(",", commandData));
+        }
+        wasCommand = true;
+    }
+    return wasCommand;
+
     }
 
     public void start() throws IOException {
