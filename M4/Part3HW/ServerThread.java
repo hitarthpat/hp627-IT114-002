@@ -201,13 +201,31 @@ public class ServerThread extends Thread {
                         server.handleReverseText(this, relevantText);
                         wasCommand = true;
                         break;
+
+
+
                     case "flip": //hp627/3/6/2024 - Challenge 1
                         server.handleFlip(this);
                         wasCommand = true;
                         break;
                     // added more cases/breaks as needed for other commands
+
+
+
+                    case "pm": //hp627/3/10/2025 - Challenge 2
+                        if (commandData.length == 4) {
+                            String targetId = commandData[2].trim();
+                            String privateMessage = String.join(" ", Arrays.copyOfRange(commandData, 3, commandData.length));
+                            server.handlePrivateMessage(this, targetId, privateMessage);
+                            wasCommand = true;
+                        }
+                        break;
+
+
+                        
                     default:
                         break;
+                        
                 }
             }
 

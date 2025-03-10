@@ -127,9 +127,23 @@ public class Client {
         } else if ("/flip".equalsIgnoreCase(text)){  //hp627; 3/6/2025 - Challenge 1
             String[] commandData = { Constants.COMMAND_TRIGGER, "flip" };
             sendToServer(String.join(",", commandData));
-            wasCommand = true;
+            wasCommand = true;       
+        
         }
 
+
+        else if (text.startsWith("/pm")) {  //hp627; 3/10/2025 - Challenge 2
+            String[] parts = text.split(" ",3);
+            if (parts.length == 3) {
+                System.out.println("Usage: /pm <target> <message>");
+            } else {
+                String targetId = parts[1];
+                String message = parts[2];
+                String[] commandData = { Constants.COMMAND_TRIGGER, "pm", targetId, message };
+                sendToServer(String.join(",", commandData));
+            }
+                wasCommand = true;
+        }
 
 
         return wasCommand;
