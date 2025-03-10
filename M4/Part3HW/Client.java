@@ -125,7 +125,7 @@ public class Client {
 
 
         } else if ("/flip".equalsIgnoreCase(text)){  //hp627; 3/6/2025 - Challenge 1
-            String[] commandData = { Constants.COMMAND_TRIGGER, "flip" };
+            String[] commandData = { Constants.COMMAND_TRIGGER, "flip" };  // Flips the coin
             sendToServer(String.join(",", commandData));
             wasCommand = true;       
         
@@ -133,7 +133,7 @@ public class Client {
 
 
         else if (text.startsWith("/pm")) {  //hp627; 3/10/2025 - Challenge 2
-            String[] parts = text.split(" ",3);
+            String[] parts = text.split(" ",3); //Sends Private Message to a current user - hp627
             if (parts.length == 3) {
                 System.out.println("Usage: /pm <target> <message>");
             } else {
@@ -147,7 +147,7 @@ public class Client {
 
 
         else if (text.startsWith("/shuffle")) {   //hp627; 3/10/2025 - Challenge 3
-            text = text.replace("/shuffle", " ").trim();
+            text = text.replace("/shuffle", " ").trim(); // Shuffles the words on the Server Side
             if (text.isEmpty()){
                 System.out.println("Error: No message provided for Shuffle");
             } else {
