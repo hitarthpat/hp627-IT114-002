@@ -132,15 +132,16 @@ public class Server {
     
     //hp627/3/6/2025 - Challenge 2
     protected synchronized void handlePrivateMessage(ServerThread sender, String targetId, String message) {
-        try {
-            long targetClientId= Long.parseLong(targetId);
+        try { // Converts the ID to string to long value -hp627 - 3/10/25
+            long targetClientId= Long.parseLong(targetId); 
             ServerThread targetThread = connectedClients.get(targetClientId);
 
             if (targetThread != null) {
-                String formattedMessage = String.format ("PM from User[%s]; %s", sender.getClientId(), message);
-                sender.sendToClient(formattedMessage);
+                String formattedMessage = String.format ("PM from User[%s]; %s", sender.getClientId(), message); // Checks if the client is connected -hp627 - 3/10/25
+                sender.sendToClient(formattedMessage); 
                 targetThread.sendToClient(formattedMessage);
             } else {
+            //tells you if it found the person or not -hp627 - 3/10/2025
                 sender.sendToClient ("User not found or offline.");
             }
         } catch (NumberFormatException e) {
@@ -149,11 +150,11 @@ public class Server {
     }
 
     
-    protected synchronized void handleFlip(ServerThread sender) {//hp627/3/6/2025 - Challenge 1
-    String result = Math.random() < 0.5 ? "Heads" : "Tails";
-    System.out.println("User[" + sender.getClientId() + "] flipped a coin and got " + result); 
+    protected synchronized void handleFlip(ServerThread sender) {//hp627 - 3/6/2025 - Challenge 1
+    String result = Math.random() < 0.5 ? "Heads" : "Tails"; 
+    System.out.println("User[" + sender.getClientId() + "] flipped a coin and got " + result);  //Send the user the result - hp627 - 3/10/25
 
-    String message = String.format("User[%s] flipped a coin and got %s", sender.getClientId(), result);
+    String message = String.format("User[%s] flipped a coin and got %s", sender.getClientId(), result); //send the result to everyone
     relay(null, message);
     
 }
@@ -162,13 +163,13 @@ public class Server {
 
 protected synchronized void handleShuffleMessage(ServerThread sender, String text) { 
     if (text == null || text.trim().isEmpty()) {
-        sender.sendToClient("Error: No message to shuffle");
+        sender.sendToClient("Error: No message to shuffle"); // Check if the text is empty or not - hp627 - 3/10/25
         return;
     }
-    List<String> words = Arrays.asList(text.split("\\s+")); 
+    List<String> words = Arrays.asList(text.split("\\s+")); //split the words and then suffles them, and rejoin it. -hp627 - 3/10/25
     Collections.shuffle(words);
     String shuffledMessage = String.join(" ", words);
-
+//Send the output - hp627 - 3/10/25
     String formattedMessage = String.format("Shuffled from User[%s]: %s", sender.getClientId(), shuffledMessage);
     System.out.println("DEBUG: Shuffled message sent -> " + formattedMessage);
     relay(null, formattedMessage);

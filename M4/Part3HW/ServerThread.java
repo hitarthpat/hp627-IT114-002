@@ -208,26 +208,25 @@ public class ServerThread extends Thread {
                         server.handleFlip(this);
                         wasCommand = true;
                         break;
-                    // added more cases/breaks as needed for other commands
 
 
 
                     case "pm": //hp627/3/10/2025 - Challenge 2
-                        if (commandData.length == 4) {
-                            String targetId = commandData[2].trim();
+                        if (commandData.length == 4) {// Gets the user id
+                            String targetId = commandData[2].trim(); //Create the private id
                             String privateMessage = String.join(" ", Arrays.copyOfRange(commandData, 3, commandData.length));
-                            server.handlePrivateMessage(this, targetId, privateMessage);
+                            server.handlePrivateMessage(this, targetId, privateMessage); //Sends the private names
                             wasCommand = true;
                         }
                         break;
                     
                     case "shuffle": //hp627/3/10/2025 - Challenge 3
-                    if (commandData.length >2) {
+                    if (commandData.length >2) { //Combines the text and suffles it
                         String textToShuffle = String.join( " ", Arrays.copyOfRange(commandData, 2, commandData.length));
                         server.handleShuffleMessage(this, textToShuffle);
                         wasCommand = true;
                     } else {
-                        this.sendToClient("Error: No message to shuffle");
+                        this.sendToClient("Error: No message to shuffle"); //Sends error if the message isnt inserted
                     }
                     
                         break;
