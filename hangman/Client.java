@@ -140,11 +140,9 @@ public class Client {
         } else if (message.startsWith("STRIKES:")) {
         int strikes = Integer.parseInt(message.substring(8));
         SwingUtilities.invokeLater(() -> ui.getGamePanel().updateStrikes(strikes));   
-        
-        
 
 
-        
+
         } else if (message.startsWith("TIMER:")) {
             int seconds = Integer.parseInt(message.substring(6));
             SwingUtilities.invokeLater(() -> ui.getGamePanel().updateTimer(seconds));
