@@ -256,7 +256,6 @@ public class ClientHandler implements Runnable {
         }
     }
 
-
     
     private String formatPlayerGuesses(Room room) {
         StringBuilder guesses = new StringBuilder();
