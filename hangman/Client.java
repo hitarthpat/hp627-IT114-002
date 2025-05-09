@@ -1,3 +1,4 @@
+package test.hangman;
 /**
  * UCID: [Your UCID]
  * Date: [Current Date]
